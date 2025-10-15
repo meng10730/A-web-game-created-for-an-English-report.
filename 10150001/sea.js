@@ -1,6 +1,6 @@
 // -------------------- 背景影片 --------------------
 const skyVideo = document.getElementById("skyVideo");
-skyVideo.src = "./SKY.mp4";
+skyVideo.src = "./sky.mp4";
 skyVideo.loop = true;
 skyVideo.play().catch(() => {});
 
@@ -429,4 +429,5 @@ canvas.addEventListener("click", (e) => {
     });
   });
 });
+
 
