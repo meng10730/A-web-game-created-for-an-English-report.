@@ -234,6 +234,30 @@ startBtn.addEventListener("click", startGame);
 restartBtn.addEventListener("click", restartToMenu);
 restartGameBtn.addEventListener("click", restartToMenu);
 
+// ⭐ 修正：新增 pauseBtn 的點擊事件監聽
+pauseBtn.addEventListener("click", () => {
+  // 檢查遊戲是否正在運行，如果沒有，則直接返回
+  if (!isGameRunning) return;
+
+  // 切換 isPaused 狀態
+  isPaused = !isPaused;
+  pauseBtn.textContent = isPaused ? "▶️ 繼續" : "⏸ 暫停";
+
+  // 根據暫停狀態控制音樂播放
+  if (isPaused) {
+    bgMusic.pause();
+    introMusic.pause();
+  } else {
+    // 只有在非靜音狀態下才嘗試播放
+    if (!muted) {
+      bgMusic.play().catch(() => {});
+      
+      // 如果遊戲已經開始，不需要再播放 introMusic
+      // 這裡只需要確保 bgMusic 恢復播放即可
+    }
+  }
+});
+
 function restartToMenu() {
   isGameRunning = false;
   isPaused = false;
@@ -430,6 +454,7 @@ canvas.addEventListener("click", (e) => {
     });
   });
 });
+
 
 
 
