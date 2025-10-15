@@ -237,6 +237,9 @@ restartGameBtn.addEventListener("click", restartToMenu);
 // ⭐ 修正：新增 pauseBtn 的點擊事件監聽
 pauseBtn.addEventListener("click", () => {
   // 檢查遊戲是否正在運行，如果沒有，則直接返回
+  console.log("Button clicked!"); // 確保點擊被捕捉
+  console.log("Before: isPaused=" + isPaused + ", isGameRunning=" + isGameRunning); // 記錄點擊前的狀態
+
   if (!isGameRunning) return;
 
   // 切換 isPaused 狀態
@@ -454,6 +457,7 @@ canvas.addEventListener("click", (e) => {
     });
   });
 });
+
 
 
 
