@@ -1,24 +1,24 @@
 // -------------------- 背景影片 --------------------
 const skyVideo = document.getElementById("skyVideo");
-skyVideo.src = "SKY.mp4";
+skyVideo.src = "./SKY.mp4";
 skyVideo.loop = true;
 skyVideo.play().catch(() => {});
 
 const oceanVideo = document.getElementById("oceanVideo");
-oceanVideo.src = "0002.mp4";
+oceanVideo.src = "./0002.mp4";
 oceanVideo.loop = true;
 oceanVideo.play().catch(() => {});
 
 // -------------------- 音樂與音效 --------------------
-const introMusic = new Audio("intro.mp3");
+const introMusic = new Audio("./intro.mp3");
 introMusic.loop = true;
 introMusic.volume = 0.3;
 
-const bgMusic = new Audio("sea.mp3");
+const bgMusic = new Audio("./sea.mp3");
 bgMusic.loop = true;
 bgMusic.volume = 0.7;
 
-const startSound = new Audio("click.mp3");
+const startSound = new Audio("./click.mp3");
 startSound.volume = 0.7;
 
 const catchSound = document.getElementById("catchSound");
@@ -69,9 +69,9 @@ let timerInterval = null;
 const player = { x: 0, y: 0, width: 200, height: 120, speed: 8, moveLeft: false, moveRight: false, facingRight: false };
 
 const boatImg = new Image();
-boatImg.src = "boat1008.png";
+boatImg.src = "./boat1008.png";
 const pauseImage = new Image();
-pauseImage.src = "0001.png";
+pauseImage.src = "./0001.png";
 
 // 7 張魚圖片
 const fishImages = [];
@@ -429,3 +429,4 @@ canvas.addEventListener("click", (e) => {
     });
   });
 });
+
