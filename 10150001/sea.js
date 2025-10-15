@@ -2,6 +2,7 @@
 const skyVideo = document.getElementById("skyVideo");
 skyVideo.src = "./sky.mp4";
 skyVideo.loop = true;
+skyVideo.muted = true;
 skyVideo.play().catch(() => {});
 
 const oceanVideo = document.getElementById("oceanVideo");
@@ -429,5 +430,6 @@ canvas.addEventListener("click", (e) => {
     });
   });
 });
+
 
 
