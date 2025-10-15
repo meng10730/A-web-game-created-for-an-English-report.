@@ -236,27 +236,46 @@ restartGameBtn.addEventListener("click", restartToMenu);
 
 // ⭐ 修正：新增 pauseBtn 的點擊事件監聽
 pauseBtn.addEventListener("click", () => {
-  // 檢查遊戲是否正在運行，如果沒有，則直接返回
-  console.log("Button clicked!"); // 確保點擊被捕捉
-  console.log("Before: isPaused=" + isPaused + ", isGameRunning=" + isGameRunning); // 記錄點擊前的狀態
+  // ----------------------------------------------------
+  // ⭐ D-Test 1: 確認點擊事件是否有被捕獲
+  // ----------------------------------------------------
+  alert("Pause button clicked!"); 
+  // 由於 alert 會中斷遊戲，我們改用更輕量的方式：
 
-  if (!isGameRunning) return;
+  // 檢查遊戲是否運行中？
+  if (!isGameRunning) {
+    // ----------------------------------------------------
+    // ⭐ D-Test 2: 如果遊戲未運行，用 alert 確認是否被這裡擋住
+    // ----------------------------------------------------
+    alert("Game is not running. isGameRunning: " + isGameRunning); 
+    return;
+  }
 
-  // 切換 isPaused 狀態
-  isPaused = !isPaused;
+  // ----------------------------------------------------
+  // ⭐ D-Test 3: 如果執行到這裡，表示遊戲正在運行
+  // ----------------------------------------------------
+  alert("Game Running! Toggling pause state.");
+  
+  isPaused = !isPaused; 
+  
+  // ----------------------------------------------------
+  // ⭐ D-Test 4: 用計分板輸出 isPaused 的最新狀態
+  // ----------------------------------------------------
+  scoreBoard.textContent = "狀態: isPaused=" + isPaused; // 覆蓋計分板顯示狀態
+
   pauseBtn.textContent = isPaused ? "▶️ 繼續" : "⏸ 暫停";
 
-  // 根據暫停狀態控制音樂播放
+  // 音樂控制
   if (isPaused) {
+    alert("Pausing music...");
     bgMusic.pause();
     introMusic.pause();
   } else {
+    alert("Resuming music...");
     // 只有在非靜音狀態下才嘗試播放
     if (!muted) {
       bgMusic.play().catch(() => {});
-      
-      // 如果遊戲已經開始，不需要再播放 introMusic
-      // 這裡只需要確保 bgMusic 恢復播放即可
+      // ...
     }
   }
 });
@@ -457,6 +476,7 @@ canvas.addEventListener("click", (e) => {
     });
   });
 });
+
 
 
 
